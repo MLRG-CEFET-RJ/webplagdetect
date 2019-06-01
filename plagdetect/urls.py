@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from .startup import initialize_punkt
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('webapp.urls'), name='plagdetect'),
 ]
+
+initialize_punkt()

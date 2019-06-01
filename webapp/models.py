@@ -7,8 +7,15 @@ from django.db import models
 class Document(models.Model):
 	content = models.TextField()
 	
+	def __str__(self):
+		s = self.content[:50] + '...' if len(self.content) > 50 else self.content
+		return s
+	
 class Sentence(models.Model):
 	fragment = models.TextField()
-	article = models.ForeignKey(Document, on_delete=models.CASCADE)
+	document = models.ForeignKey(Document, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.fragment
 	
 	
