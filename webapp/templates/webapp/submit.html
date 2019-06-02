@@ -5,7 +5,11 @@
     <form method="POST">
         {% csrf_token %}
         {{ form }}
-    <input type="submit" value="Submit"/>
+        <div id="my_button_wrapper">
+            <button class="btn waves-effect waves-light my_theme" type="submit" name="action">
+                Submit
+            </button>
+        </div>
     </form>
 
 {% endblock %}

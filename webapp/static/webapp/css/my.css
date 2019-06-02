@@ -1,7 +1,24 @@
-.output {
+.my_theme{
+    background-color: #005fa1;
+}
+
+
+/* review.html */
+#my_input {
+    width: 98%;
+    height: 83%;
+    margin: 10px;
+    padding: 10px;
+}
+
+#my_button_wrapper{
+    text-align: center;
+}
+
+/* review.html */
+.my_output {
     width: 95%;
     height: 90%;
     margin: auto;
     padding: 10px;
-
 }
