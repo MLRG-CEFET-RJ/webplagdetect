@@ -13,6 +13,7 @@ class Document(models.Model):
 	
 class Sentence(models.Model):
 	fragment = models.TextField()
+	plag = models.BooleanField(default=False)
 	document = models.ForeignKey(Document, on_delete=models.CASCADE)
 	
 	def __str__(self):

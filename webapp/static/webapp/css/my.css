@@ -24,4 +24,5 @@ b {
     height: 90%;
     margin: auto;
     padding: 10px;
+    white-space: pre-line;
 }
