@@ -1,3 +1,4 @@
+# Copied from https://github.com/dhwajraj/deep-siamese-text-similarity
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

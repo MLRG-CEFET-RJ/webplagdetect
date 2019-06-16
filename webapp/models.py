@@ -6,9 +6,10 @@ from django.db import models
 # Create your models here.
 class Document(models.Model):
 	content = models.TextField()
+	hasBeenReviewed = models.BooleanField(default=False)
 	
 	def __str__(self):
-		s = self.content[:50] + '...' if len(self.content) > 50 else self.content
+		s = str(self.id) + ': ' + self.content[:50] + '...' if len(self.content) > 50 else self.content
 		return s
 	
 class Sentence(models.Model):

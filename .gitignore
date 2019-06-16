@@ -1,8 +1,20 @@
 .idea/*
 
+data/*
+!data/cc/
+
+plagdetect/train_model.py
+test/*
+webapp/migrations/*
+!webapp/migrations/__init__.py
+
 *.in
 *.out
 *.lp
 *.pyc
 *.npz
 *.npy
+
+db.sqlite3
+lp-linear.lp
+plag.db

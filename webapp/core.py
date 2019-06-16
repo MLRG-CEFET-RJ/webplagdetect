@@ -1,4 +1,4 @@
-import sys, os, shutil
+import sys, os, shutil, pickle, time
 
 import nltk
 
@@ -16,6 +16,7 @@ from torch.autograd import Variable
 sys.path.append('skip-thoughts.torch/pytorch')
 
 MAX_DOCUMENT_LENGTH = 15
+UNISKIP_PATH = 'data/uniskip'
 
 def detect_plagiarism(document):
 	document.save()
@@ -39,8 +40,6 @@ def save_sentences(document):
 		sentence_instance = Sentence(fragment=sentence, document=document)
 		sentence_instance.save()
 	setence_instances = Sentence.objects.filter(document__id=document.id)
-	
-	
 	return setence_instances
 
 def get_report(text, doc_id):
@@ -52,6 +51,7 @@ def get_report(text, doc_id):
 def skip_thoughts(sentence_instances, doc_id):
 	sentence_ids = [s.id for s in sentence_instances]
 	sentences = [s.fragment for s in sentence_instances]
+	start_time = time.time()
 	vocab_processor = MyVocabularyProcessor(max_document_length=MAX_DOCUMENT_LENGTH, min_frequency=0, is_char_based=False)
 	vocab_processor.fit_transform(sentences)
 	
@@ -63,18 +63,29 @@ def skip_thoughts(sentence_instances, doc_id):
 	## Treat the id's as index into list and create a list of words in the ascending order of id's
 	## word with id i goes at index i of the list.
 	vocabulary = list(list(zip(*sorted_vocab))[0])
-	
+	end_time = time.time()
+	print_time('processing vocabulary', start_time, end_time)
 	dir_st = 'data/skip-thoughts'
-	
+
+	start_time = time.time()
 	print("Creating skip-thoughts model...")
 	uniskip = UniSkip(dir_st, vocabulary)
-	
+	end_time = time.time()
+	print_time('loading uniskip', start_time, end_time)
 	input = Variable(torch.LongTensor(list(vocab_processor.fit_transform(sentences))))
 	
+	start_time = time.time()
 	output_seq2vec = uniskip(input)
+	end_time = time.time()
+	print_time('generating embeddings', start_time, end_time)
 	
 	incc, id_dict = build_cc_input(output_seq2vec, sentence_ids, doc_id)
+	
+	start_time = time.time()
 	outcc = correlation_clustering(incc)
+	end_time = time.time()
+	print_time('correlation clustering', start_time, end_time)
+	
 	clusters = load_clusters(outcc, id_dict)
 	flag_plagiarism(clusters)
 	
@@ -122,6 +133,11 @@ def flag_plagiarism(clusters):
 	# Update database
 	Sentence.objects.filter(id__in=plag).update(plag=True)
 	
+def load_uniskip():
+	uniskip = None
+	with open(UNISKIP_PATH, 'rb') as f:
+		uniskip = pickle.load(f)
+	return uniskip
 
-		
-		
+def print_time(task, start_time, end_time):
+	print('Time spent on %s: %.2f' % (task, end_time - start_time))
