@@ -31,8 +31,21 @@ def print_report(app_doc_id, plag_doc_id):
 			raise Exception('Sentences do not match')
 	acc = accuracy_score(y_true, y_pred)
 	f1 = f1_score(y_true, y_pred)
-	print 'app_id: {:4d} | plag_id: {:4d} | accuracy: {:2f} | f1 score: {:2f}'.format(app_doc_id, plag_doc_id, acc, f1)
+	print 'app_id: {:4d} | plag_id: {:4d} | accuracy: {:.4f} | f1 score: {:.4f}'.format(app_doc_id, plag_doc_id, acc, f1)
+	
 	return acc, f1
+
+def print_latex_table_lines(ids, accs, f1s):
+	tuples = zip(ids, accs, f1s)
+	tuples = sorted(tuples, key=lambda x: x[0])
+	print '---'
+	print 'Latex table:'
+	print '---'
+	for tuple in tuples:
+		print 'suspicious-document{:05d}.txt & {:.4f} & {:.4f}\\\\'.format(tuple[0], tuple[1], tuple[2])
+	print '---'
+	print 'Total mean & {:.4f} & {:.4f}\\\\'.format(mean(accs), mean(f1s))
+	
 
 if __name__ == '__main__':
 	app_doc_ids  = [1,    2,    3,    4,    5,    6,    7,    8,    9,   10,   11,   12,   13,   14,   15,   16,   17,   18,   19,   20,   21,   22]
@@ -43,5 +56,5 @@ if __name__ == '__main__':
 		acc, f1 = print_report(app_doc_ids[i], plag_doc_ids[i])
 		accs.append(acc)
 		f1s.append(f1)
-	print 'Total accuracy: {:2f} | Total f1 score: {:2f}'.format(mean(accs), mean(f1s))
-	
+	print 'Total accuracy: {:.4f} | Total f1 score: {:.4f} \\\\'.format(mean(accs), mean(f1s))
+	print_latex_table_lines(plag_doc_ids, accs, f1s)

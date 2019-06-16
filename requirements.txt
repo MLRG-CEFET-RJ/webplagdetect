@@ -13,7 +13,6 @@ certifi=2019.3.9=py27_0
 django=1.11.10=py27hd476221_0
 enum34=1.1.6=py27_1
 funcsigs=1.0.2=py27_0
-future=0.17.1=pypi_0
 futures=3.2.0=py27_0
 gast=0.2.2=py27_0
 grpcio=1.16.1=py27hf8bcb03_1
@@ -48,7 +47,6 @@ scikit-learn=0.20.3=py27hd81dba3_0
 scipy=1.2.1=py27h7c811a0_0
 setuptools=41.0.1=py27_0
 six=1.12.0=py27_0
-skipthoughts=0.0.0=pypi_0
 sqlite=3.28.0=h7b6447c_0
 tensorboard=1.13.1=py27hf484d3e_0
 tensorflow=1.13.1=mkl_py27h74ee40f_0
@@ -56,7 +54,6 @@ tensorflow-base=1.13.1=mkl_py27h7ce6ba3_0
 tensorflow-estimator=1.13.0=py_0
 termcolor=1.1.0=py27_1
 tk=8.6.8=hbc83047_0
-torch=1.1.0=pypi_0
 traceback2=1.4.0=py27_0
 unittest2=1.1.0=py27_0
 werkzeug=0.15.2=py_0

@@ -28,6 +28,8 @@ assuming you have [Anaconda](https://www.anaconda.com/) installed:
 
 ```text
 conda create --name webplagdetect --file requirements.txt
+conda activate webplagedect
+pip install skipthoughts==0.0.0
 ```
 
 If you don't have Anaconda installed, you may download it 
@@ -36,11 +38,10 @@ If you don't have Anaconda installed, you may download it
 
 ### Setting up Django database
 
-Once the Anaconda environment is created, it should be activated and the initial setup for the Django
+Once the Anaconda environment is created and activated, it should be activated and the initial setup for the Django
 app must be made:
 
 ```text
-conda activate webplagdetect
 python manage.py makemigrations
 python manage.py migrate
 ```
