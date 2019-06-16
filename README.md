@@ -72,3 +72,13 @@ python manage.py runserver
  
  The tool can accessed via browser in your [locahost](http://127.0.0.1:8000/).
  
+## Experiments
+
+There is an `experiments` folder under the root directory. This folder has no purpose for the tool
+and was only used to generate reports for assessment of the tool. The `experiments/plag_comparison.py`
+file contains a script to generate a report of the tool performance, comparing the achieved results
+with the [PAN Plagiarism Corpus 2011 dataset](https://webis.de/data/pan-pc-11.html). In order to
+generate the database containing the data needed for comparison, you must follow [instructions in
+this repository](https://github.com/MLRG-CEFET-RJ/plagdetect) up to the Create database section.
+The repository just mentioned contains a one of the approaches taken in order to build this tool.
+ 
