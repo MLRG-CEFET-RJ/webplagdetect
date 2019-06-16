@@ -70,7 +70,10 @@ by running the following command:
 python manage.py runserver
 ```
  
- The tool can accessed via browser in your [locahost](http://127.0.0.1:8000/).
+ The tool can accessed via browser in your [locahost](http://127.0.0.1:8000/) and submit some text
+ to see what comes out. Please, note that this process currently take a few minutes. Also, the tool
+ will take some time to generate the first report as the Skip-Thoughts model used to generate
+ sentence embeddings needs to be trained.
  
 ## Experiments
 
