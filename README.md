@@ -7,7 +7,11 @@ An user accesses the tool via a web browser, submits their text for analysis,
 then wait a few minutes to get the report. 
 The tool will highlight candidate sentences of plagiarism cases detected.
 
+Submiting some text to the tool.
+
 ![Tool input](/data/images/plagdetect_input.PNG)
+
+Viewing the report generated.
 
 ![Tool out](/data/images/plagdetect_output.PNG)
 
