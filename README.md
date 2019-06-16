@@ -22,7 +22,7 @@ The requirements for the Python part of the tool are listed in  [requirements.tx
 and can be installed in a brand new environment by running the following command in your terminal,
 assuming you have [Anaconda](https://www.anaconda.com/) installed:
 
-```
+```text
 conda create --name webplagdetect --file requirements.txt
 ```
 
@@ -35,7 +35,7 @@ If you don't have Anaconda installed, you may download it
 Once the Anaconda environment is created, it should be activated and the initial setup for the Django
 app must be made:
 
-```
+```text
 conda activate webplagdetect
 python manage.py makemigrations
 python manage.py migrate
@@ -55,7 +55,7 @@ if needed.
 
 You can build the C++ executable by running the following commands:
 
-```
+```text
 cd correlation_clustering # changes to the directory contaning the makefile.
 make # builds the executable file called by the application.
 cd .. # goes back to the project root directory.
@@ -66,7 +66,7 @@ cd .. # goes back to the project root directory.
 Once you have followed all the installation steps described above, you main start the tool
 by running the following command:
 
-```
+```text
 python manage.py runserver
 ```
  

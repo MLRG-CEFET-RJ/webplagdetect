@@ -1,7 +1,8 @@
 .idea/*
 
 data/*
-!data/cc/
+!data/cc
+!data/images
 
 plagdetect/train_model.py
 test/*
